@@ -10,12 +10,10 @@ import React,{ useState, useEffect } from "react";
 
 export default function GameScreen({navigation}) {
 
-
   const [guessedNumber, setGuessedNumber] = useState('');
   const [attemptsLeft, setAttemptsLeft] = useState(3)
   const [score, setScore] = useState(0)
   const [showButton, setShowButton] = useState(false)
-  const [showModal, setShowModal] = useState(false)
   const [secretNumber, setSecretNumber] = useState(Math.round(Math.random()*9))
 
   useEffect(()=>{
@@ -25,13 +23,11 @@ export default function GameScreen({navigation}) {
     }else{
         setShowButton()
     }
-    console.log(secretNumber)
   },[guessedNumber, showButton])
 
 
   const matchNumbers =()=>{
     const userInput = parseInt(guessedNumber, 10);
-    // console.log(userInput)
     if(userInput === secretNumber){
       const Score = score + 1;
       Alert.alert("CONGRATULATION!","Yaay!. You guessed right",[{text: "THANKS"}]);
@@ -58,8 +54,6 @@ export default function GameScreen({navigation}) {
   const handleInput = (value)=>{
     setGuessedNumber(value);
    }
-
- 
 
   return (
     <>
@@ -98,7 +92,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
-    // backgroundColor:''
   },
   input: {
     borderColor: "skyblue",
